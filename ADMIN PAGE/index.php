@@ -1,3 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div class="navigation">
+    <div class="container">
+    
+        <div class="navigationLogo">
+  <a href="/">
+      <img src="FEMR LOGO ADMIN PAGE.png" />
+  </a>
+
+</div>
+    
+    </div>
+</div>
+<br>
+  </body>
+  
+</html>
 <?php
 // input misspelled word
 include('connect.php');
@@ -22,7 +41,7 @@ $countQuery = mysqli_field_count($conn);
 // }
 
 //Grabbing the count of the cities DICTIONARY
-$cityDictionary = "SELECT city_name FROM femr.citytest";
+$cityDictionary = "SELECT cityname FROM femr.citytest2";
 $resultQuery2 = $conn->query($cityDictionary);
 $countQuery2 = mysqli_field_count($conn);
 // while($row2 = $resultQuery2->fetch_array()){
@@ -30,8 +49,11 @@ $countQuery2 = mysqli_field_count($conn);
         // echo $row[$j];
 // }
 ?>  <div class="jumbotron"> <div class='container'>
- <div class='row col-md-6 col-md-offset-2 custyle'>
+<center><img align="middle" src="images/femrLogo.png"></img></center>
+<center><h1> City Cleanse Results </h1></center>
+ <center><div class='row col-md-6 col-md-offset-2 custyle'></center>
  <table class='table table-striped custab table-bordered'>
+
  <thead>
      <tr>
        <th> Input Word </th>
@@ -74,13 +96,14 @@ while($row = $resultQuery->fetch_array())
   if( $shortest < 3 && $shortest != 0): ?>
 
          <tr>
-           <td> <?php  echo $row[$i]; ?> </td>
-           <td> <?php echo $closest; ?> </td>
-             <td align='center'><div class='btn-group'>
+           <td align='left' width="40%"> <?php  echo $row[$i]; ?> </td>
+           <!-- <td> /* <?php echo $closest; ?> */ </td> -->
+             <td align='left'><div class='btn-group'>
             <form  action='index.php' method='POST'>
                 <input type="hidden" name="id" value="<?php echo $row[$i+1]; ?>">
-                <input type="hidden" name="suggestivecity" value="<?php echo $closest ?>">
-                <button type="submit" name="update" value="update" class="btn btn-success">Update</button>
+                <input type="text" name="suggestivecity" value="<?php echo $closest ?>">
+				<td align='center' width="5%"><button type="submit" name="update" value="update" class="btn btn-success">Update</button>
+                <!-- <button type="submit" name="update" value="update" class="btn btn-success">Update</button> -->
                 <!-- <button type="submit" name="newfield" value="newfield" class="btn btn-success">SuggestNew</button> -->
             </form>
             </div></td>
@@ -120,29 +143,9 @@ while($row = $resultQuery->fetch_array())
   <link href="css/bootstrap.css" rel="stylesheet">
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="adminpage.css">
+  <link rel="stylesheet" href="style.css">
 </head>
-<nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand left" href="adminpage.html">fEMR</a>
-        </div>
-      </div>
-</nav>
 
 
-</div>
 
-  </body>
-
-  <footer>
-      <div class="row-fluid">
-          <div class="col-xs-6">
-                          <img align="middle" src="images/femrLogo.png"></img>
-          </div>
-          <div class="col-xs-6">
-              <p class="text-right">Designed for use in Google Chrome</p>
-          </div>
-      </div>
-  </footer>
   </html>
